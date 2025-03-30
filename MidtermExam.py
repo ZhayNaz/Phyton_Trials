@@ -24,7 +24,7 @@ for test in test_cases:
 def get_unique_char():
     used_char = set()
     while True:
-        user_input = input("Enter string (or 'exit' to quit): ")
+        user_input = input("Enter string (or 'Exit' to quit):  ")
         if user_input.lower() == "exit":
             break
         unique_chars = set(user_input) - used_char
@@ -32,7 +32,7 @@ def get_unique_char():
             print(f"New characters: {list(unique_chars)}")
             used_char.update(unique_chars)
         else:
-            print("NO new characters found.")
+            print("NO new chcaracters found.")
 
 
 #desktop_path
