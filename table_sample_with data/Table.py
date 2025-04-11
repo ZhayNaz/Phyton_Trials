@@ -3,9 +3,7 @@ from tkinter import ttk, messagebox
 import os
 import csv
 
-CSV_FILE = r"C:\Users\Mabie Garcia\Desktop\College Life\Python\table_sample_with data\studentList.csv"
-print(os.path.exists(CSV_FILE))
-
+CSV_FILE = "studentList.csv"
 
 def initialize_csv():
     if not os.path.exists(CSV_FILE):
@@ -22,13 +20,9 @@ def load_students():
     if os.path.exists(CSV_FILE):
         with open(CSV_FILE, mode='r') as file:
             reader = csv.reader(file)
-            try:
-                next(reader) 
-            except StopIteration:
-                return
+            next(reader) 
             for row in reader:
                 student_table.insert("", "end", values=row)
-
 
 root = tk.Tk()
 root.title("Student Table")
