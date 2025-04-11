@@ -1,8 +1,6 @@
 import tkinter as tk
 
 root = tk.Tk()
-root.geometry("600x500")
-root.title("Login Form")
 
 frame = tk.Frame(root, padx=20, pady=20)
 frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
