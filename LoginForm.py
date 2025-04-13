@@ -69,7 +69,6 @@ def login():
         cursor.execute("INSERT INTO logs (username, login_time) VALUES (?, ?)", (username, login_time))
         conn.commit()
         conn.close()
-
         subprocess.Popen([sys.executable, "LogsForm.py", username])  
     else:
         conn.close()

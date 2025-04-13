@@ -4,10 +4,8 @@ from tkinter import ttk, messagebox
 import sqlite3
 from datetime import datetime
 
-# Get the logged-in username from command-line arguments
-CURRENT_USER = sys.argv[1] if len(sys.argv) > 1 else "unknown"  # Default to "unknown" if no args
+CURRENT_USER = sys.argv[1] if len(sys.argv) > 1 else "unknown"
 
-# --- GUI Setup ---
 root = tk.Tk()
 root.title("User Logs")
 root.geometry("600x450")
@@ -16,7 +14,6 @@ root.configure(bg="#f9f9f9")
 title = tk.Label(root, text="User Login Logs", font=("Arial", 16, "bold"), bg="#f9f9f9")
 title.pack(pady=10)
 
-# --- Treeview Table Setup ---
 columns = ("username", "login_time", "logout_time")
 tree = ttk.Treeview(root, columns=columns, show="headings")
 
@@ -61,7 +58,6 @@ def logout():
 
     logout_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    # First, get the id of the most recent login for the current user (i.e., the one with the NULL logout_time)
     cursor.execute("""
         SELECT id FROM logs
         WHERE username = ? AND logout_time IS NULL
