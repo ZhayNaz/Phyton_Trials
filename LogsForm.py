@@ -52,40 +52,4 @@ def load_logs():
 
 load_logs()
 
-def logout():
-    conn = sqlite3.connect("users.db")
-    cursor = conn.cursor()
-
-    logout_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-    cursor.execute("""
-        SELECT id FROM logs
-        WHERE username = ? AND logout_time IS NULL
-        ORDER BY login_time DESC
-        LIMIT 1
-    """, (CURRENT_USER,))
-    
-    result = cursor.fetchone()
-
-    if result:
-        log_id = result[0]  
-        cursor.execute("""
-            UPDATE logs
-            SET logout_time = ?
-            WHERE id = ?
-        """, (logout_time, log_id))
-
-        conn.commit()
-        conn.close()
-
-        messagebox.showinfo("Logout", f"{CURRENT_USER} logged out successfully.")
-        root.destroy() 
-    else:
-        messagebox.showerror("Logout Error", "No active session found.")
-        conn.close()
-
-
-logout_btn = tk.Button(root, text="Logout", command=logout, bg="#f44336", fg="white", font=("Arial", 12, "bold"), padx=10, pady=5)
-logout_btn.pack(pady=10)
-
 root.mainloop()
