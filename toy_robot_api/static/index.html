@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Robot Simulator</title>
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+  <h1>🤖 Robot Simulator</h1>
+  
+  <div id="grid" class="grid"></div>
+  
+  <div class="controls">
+    <button onclick="upRobot()">⬆️ Up</button><br>
+    <button onclick="leftRobot()">⬅️ Left</button>
+    <button onclick="rightRobot()">➡️ Right</button><br>
+    <button onclick="downRobot()">⬇️ Down</button>
+  </div>
+
+    <div class="extra-controls">
+        <button onclick="reportRobot()">Report</button>
+    </div>
+    <div class="extra-controls">
+        <button onclick="reportRobot()">Report</button>
+        <input type="number" id="boardSize" min="5" value="5">
+        <button onclick="resizeBoard()">Change Board Size</button>
+    </div>
+
+
+  <div id="output" class="output"></div>
+    <!-- Report Dialog -->
+    <dialog id="reportDialog">
+        <h2>📜 Robot Movement Logs</h2>
+        <ul id="logList"></ul>
+        <button onclick="closeDialog()">Close</button>
+    </dialog>
+  <script src="static/app.js"></script>
+</body>
+</html>
