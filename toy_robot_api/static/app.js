@@ -25,7 +25,6 @@ function drawGrid(robot, size = boardSize) {
   }
 }
 
-// Place robot at (0,0) when page loads
 async function initRobot() {
   let res = await fetch(`${API}/place`, {
     method: "POST",
@@ -93,5 +92,4 @@ async function resizeBoard() {
   drawGrid(data.position, data.board.n);
 }
 
-// Run on page load
 initRobot();
